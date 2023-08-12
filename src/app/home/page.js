@@ -105,13 +105,13 @@ const Home = () => {
                 className={`${styles.logo_image} ${styles.clickableImage}`}
                 onClick={() => handleImageClick('/images/kuromi_f.png')}
             />
-            <div>
+            {/* <div>
                 <Image
                     fill={true}
                     src="/images/advertisement.png"
                     className={styles.advertisement_Image}
                 />
-            </div>
+            </div> */}
             {/* <HomeBottom />
             <MProfileModal open={modalOpen1} onClose={closeModal1} imageSrc={selectedImage} />
             <FProfileModal open={modalOpen2} onClose={closeModal2} imageSrc={selectedImage} />
