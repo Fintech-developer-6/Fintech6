@@ -21,7 +21,7 @@ export default function Join2(props) {
           <div className="joinYourConnect">
             <label className="joinYourConnectLabel" htmlFor="yourCode">상대방 커플연결 코드</label><br />
             <input className="joinYourConnectInput" type="text" id="yourCode" name="yourCode" defaultValue=""
-              placeholder="상대방 코드를 입력해주세요." />
+              placeholder="상대방 코드를 입력해주세요." autoComplete='off' />
             <br />
           </div>
         </div>

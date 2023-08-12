@@ -22,23 +22,23 @@ export default function Join1(props) {
           <form className="joinForm" action="">
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="username">이름 </label><br />
-              <input className="joinInput" type="text" id="username" name="username" /><br />
+              <input className="joinInput" type="text" id="username" name="username" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="birthday">생년월일 </label><br />
-              <input className="joinInput" type="password" id="birthday" name="birthday" /><br />
+              <input className="joinInput" type="password" id="birthday" name="birthday" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="phone">전화번호 </label><br />
-              <input className="joinInput" type="password" id="phone" name="phone" /><br />
+              <input className="joinInput" type="password" id="phone" name="phone" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="nickname">아이디 </label><br />
-              <input className="joinInput" type="password" id="nickname" name="nickname" /><br />
+              <input className="joinInput" type="password" id="nickname" name="nickname" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="password">비밀번호 </label><br />
-              <input className="joinInput" type="password" id="password" name="password" /><br />
+              <input className="joinInput" type="password" id="password" name="password" autoComplete='off' /><br />
             </div>
           </form>
         </div>
