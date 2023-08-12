@@ -42,20 +42,24 @@ export default function Join1(props) {
             </div>
           </form>
         </div>
-        <div className="joinBtnDiv">
-          <button className="joinBtn" type="submit" onClick={() => {
-            router.push("/join2")
-          }}>다음</button>
-          <button className="joinBtn" type="submit" onClick={() => {
-            router.push("/login")
-          }}>취소</button>
-        </div>
+      </div>
+
+      <div className="joinBtnDiv">
+        <button className="joinBtn" type="submit" onClick={() => {
+          router.push("/login/join2")
+        }}>다음</button>
+        <button className="joinBtn" type="submit" onClick={() => {
+          router.push("/login")
+        }}>취소</button>
       </div>
       <style jsx>
         {`
         .joinbody {
           background-color: white;
           height : 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
         
         .joinUp {
@@ -123,6 +127,7 @@ export default function Join1(props) {
         }
         
         .joinFormOne {
+          margin-top : 20px;
           border-bottom: solid 1px;
         }
         
@@ -135,7 +140,7 @@ export default function Join1(props) {
           color: black;
           border: none;
           width: 100%;
-        margin-top : 5px;
+          margin-top : 5px;
         
         }
         /* bottom 공유 */
@@ -143,9 +148,7 @@ export default function Join1(props) {
           text-align: center;
           margin-top : 15px;
           width: 100%;
-          position: absolute; 
-          bottom :0;
-          margin-bottom: 10px;
+          margin-bottom: 30px;
         }
         
         .joinBtn {
@@ -154,7 +157,6 @@ export default function Join1(props) {
           border-color: white;
           border-radius: 5px;
           width: 90%;
-        
         }
       `}</style>
     </>

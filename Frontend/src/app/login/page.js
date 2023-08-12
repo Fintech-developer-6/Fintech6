@@ -23,7 +23,7 @@ export default function Login(props) {
           <button className="loginBottomBtn">비밀번호 찾기</button>
           <button className="loginBottomBtn" onClick={(e) => {
             e.preventDefault();
-            router.push("/join1")
+            router.push("login/join1")
           }}>회원가입</button>
         </div>
         <h1><Link href="/">홈 화면으로 가기</Link></h1>
@@ -67,7 +67,7 @@ export default function Login(props) {
           color: white;
           justify-content: center;
           align-items: center;
-          border-style: none;
+          border-style: none; 
         }
         
         .loginForm {
