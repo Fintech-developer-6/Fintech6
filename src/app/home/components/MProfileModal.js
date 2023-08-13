@@ -1,24 +1,89 @@
 import React from 'react';
+import Image from 'next/image';
+import styles from '../Profile.module.css';
 
-const ProfileModal = ({ open, onClose, imageSrc }) => {
+const MProfileModal = ({ open, onClose, imageSrc }) => {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className={styles.container}>
       <img
         src="/images/close.png"
-        alt="Modal Image"
-        styles={{
-          maxWidth: '5px',
-          maxHeight: '5px',
-          objectFit: 'contain',
+        alt="Close Image"    
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          top: '10px',
+          right: '10px',
+          width: '20px',
+          height: '20px',
+          cursor: 'pointer'
         }}
-        onClick={onClose} />        
-      <img src={imageSrc} alt="Modal Image" />
+      />
+      <div className={styles['profile-image']}>
+        <img 
+          src={imageSrc} alt="Modal Image"
+          style={{
+            width: '70px',
+            height: '70px',
+          }}
+        />
+      </div>
+      <div className={styles['profile-content']} onClick={(e) => e.stopPropagation()}>
+        <div className={styles['profile-text']}
+          style={{
+            marginTop: '50px',
+            fontSize: '13px',
+            color: 'white' 
+          }}>
+          이모앙
+        </div>
+        <div className={styles['profile-text']}
+          style={{
+            marginTop: '5px',
+            fontSize: '13px',
+            color: 'white' 
+          }}>
+          2000.12.13
+        </div>
+        <div className={styles['profile-text']}
+          style={{
+            marginTop: '5px',
+            fontSize: '10px',
+            color: '#633277' 
+          }}>
+          moa@gmail.com
+        </div>
+        <div className={styles['profile-message']}
+          style={{
+            marginTop: '25px',
+            fontSize: '10px',
+            color: '#633277' 
+          }}>
+            <textarea
+              type="text"
+              placeholder="코타키나발루 갈거야~"
+              style={{
+                marginTop: '5px',
+                marginLeft: '5px',
+                width: '100%',
+                height: '100%',
+                fontSize: '10px',
+                border: 'none',
+                outline: 'none',
+                color: '#633277',
+                verticalAlign: 'middle',
+                background: 'transparent',
+                resize: 'none'
+              }}
+            />
+        </div>
+        <div className={styles['button']}>
+          프로필 편집
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProfileModal;
+export default MProfileModal;
