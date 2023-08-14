@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../Feed.module.css';
 
 const FeedModal = ({ open, onClose, imageSrc }) => {
+  
+  const [count, setCount] = useState(10);
+  const [imagePath, setImagePath] = useState('/images/hungry_bear.png');
+  const [changingImage, setChangingImage] = useState(false);
+
+  const decreaseCount = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (changingImage) {
+      setImagePath('/images/full_bear.png');
+
+      const timer = setTimeout(() => {
+        setImagePath('/images/hungry_bear.png');
+        setChangingImage(false);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [changingImage]);
+
   if (!open) return null;
 
   return (
@@ -36,12 +60,12 @@ const FeedModal = ({ open, onClose, imageSrc }) => {
   </div>
   <div className={styles.centerContainer}>
     <img
-      src="/images/hungry_bear.png"
+      src={imagePath}
       className={styles.centeredImage}
     />
   </div>
   <div className={styles.buttonContainer}>
-    <button className={styles.customButton}>
+    <button className={styles.customButton } onClick={() => { decreaseCount(); setChangingImage(true); }}>
       먹이주기
     </button>
   </div>
@@ -53,7 +77,7 @@ const FeedModal = ({ open, onClose, imageSrc }) => {
       />
     </div>
     <div className={styles.cointext}>
-      내 먹이 : 14개
+      내 먹이 : {count}개
     </div>
   </div>
   </div>

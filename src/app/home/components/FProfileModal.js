@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from '../Profile.module.css';
 
 const FProfileModal = ({ open, onClose, imageSrc }) => {
+  const [message, setMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSaveMessage = () => {
+    console.log('Saved message:', message);
+  };
+  
   if (!open) return null;
 
   return (
@@ -76,9 +86,11 @@ const FProfileModal = ({ open, onClose, imageSrc }) => {
                 background: 'transparent',
                 resize: 'none'
               }}
+              value={message}
+              onChange={handleInputChange}
             />
         </div>
-        <div className={styles['button']}>
+        <div className={styles['button']} onClick={handleSaveMessage}>
           프로필 편집
         </div>
       </div>
