@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-          <div className={Style.root}>{children}</div>
+        <div className={Style.root}>{children}</div>
         <GlobalContextProvider>
           <BottomNavBar />
         </GlobalContextProvider>

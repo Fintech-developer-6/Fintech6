@@ -10,11 +10,11 @@ import Home from '@mui/icons-material/Home';
 import Tune from '@mui/icons-material/Tune';
 import { colors } from '@mui/material';
 import { useState } from 'react';
-import { useGlobalContext } from '../Context/store';
+import useGlobalContext from '../Context/store';
 
 export const BottomNavBar = () => {
   const { value, setValue } = useGlobalContext();
-  // const [value, setValue] = useState(data);
+  // const [value, setValue] = useState(2);
 
 
   const changeActiveColor = (index) => {
@@ -30,6 +30,7 @@ export const BottomNavBar = () => {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        sx ={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       >
         <BottomNavigationAction label='홈' icon={<Home />} 
           sx={{ color: changeActiveColor(0) }} 

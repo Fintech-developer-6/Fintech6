@@ -4,37 +4,41 @@ import { useRouter } from "next/navigation";
 
 export default function Join2(props) {
   const router = useRouter();
+
+  const ActionJoin = (e) => {
+    router.push("/home")
+
+  };
   return (
     <>
       <div className="joinbody">
         <div className="jointopbar">회원가입</div>
         <div className="formWrapper">
-        <div className="joinLogoImg"><img src="/join/pingHeartLogo.png" alt="#" /></div>
-        {/* 바뀌는 부분만 css추가 */}
-        <div className="joinConnectDiv">
-          <div className="joinMyConnect">
-            <label className="joinMyConnectLabel" htmlFor="myCode">내 커플연결 코드</label><br />
-            <input className="joinMyConnectInput" type="text" id="myCode" name="myCode" defaultValue="12345678" /><br></br>
-            <label className="joinMyConnectLabel2" htmlFor="myCode">24시간 내에 연결하지 못하면 초기화 됩니다.</label><br />
-            <button className="joinMyConnectBtn">공유</button><br />
-          </div>
+          <div className="joinLogoImg"><img src="/join/pingHeartLogo.png" alt="#" /></div>
+          {/* 바뀌는 부분만 css추가 */}
+          <div className="joinConnectDiv">
+            <div className="joinMyConnect">
+              <label className="joinMyConnectLabel" htmlFor="myCode">내 커플연결 코드</label><br />
+              <input className="joinMyConnectInput" type="text" id="myCode" name="myCode" defaultValue="12345678" /><br></br>
+              <label className="joinMyConnectLabel2" htmlFor="myCode">24시간 내에 연결하지 못하면 초기화 됩니다.</label><br />
+              <button className="joinMyConnectBtn">공유</button><br />
+            </div>
 
-          <div className="joinYourConnect">
-            <label className="joinYourConnectLabel" htmlFor="yourCode">상대방 커플연결 코드</label><br />
-            <input className="joinYourConnectInput" type="text" id="yourCode" name="yourCode" defaultValue=""
-              placeholder="상대방 코드를 입력해주세요." autoComplete='off' />
-            <br />
+            <div className="joinYourConnect">
+              <label className="joinYourConnectLabel" htmlFor="yourCode">상대방 커플연결 코드</label><br />
+              <input className="joinYourConnectInput" type="text" id="yourCode" name="yourCode" defaultValue=""
+                placeholder="상대방 코드를 입력해주세요." autoComplete='off' />
+              <br />
+            </div>
+          </div>
+          <div className="joinBtnDiv">
+            <button className="joinBtn" type="submit">전송</button>
+            <button className="joinBtn" onClick={() => {
+              router.push("/login")
+            }}>취소</button>
           </div>
         </div>
-        </div>
-        <div className="joinBtnDiv">
-          <button className="joinBtn" type="submit" onClick={() => {
-            router.push("/home")
-          }}>전송</button>
-          <button className="joinBtn" type="submit" onClick={() => {
-            router.push("/login")
-          }}>취소</button>
-        </div>
+
       </div>
       <style jsx>
         {`
@@ -134,9 +138,7 @@ export default function Join2(props) {
         /* bottom 공유 */
         .joinBtnDiv {
           text-align: center;
-          margin-top : 15px;
           width: 100%;
-          margin-bottom: 30px;
         }
 
         .joinBtn {

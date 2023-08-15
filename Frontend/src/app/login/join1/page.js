@@ -1,9 +1,41 @@
 'use client'
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Join1(props) {
   const router = useRouter();
+  const actionJoin = async (e) => {
+    e.preventDefault();
+    const [member, setMember] = useState({});
+    const name = e.target.name.value;
+    const birthday = e.target.birthday.value;
+    const phone = e.target.phone.value;
+    const nickname = e.target.nickname.value;
+    const password = e.target.password.value;
+    console.log({ name, birthday, phone, nickname, password });
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, birthday, phone, nickname, password }),
+    }
+    try {
+      const resp = await fetch(process.env.API_URL + 'join', options);
+      if (!resp.ok) {
+        throw new Error("Bad response", {
+          cause : {resp}
+        })
+      }
+      const member = await resp.json();
+      alert("회원가입을 축하합니다. 나머지 정보도 입력해주세요.")
+    } catch (e) {
+      alert("회원가입에 실패하였습니다. 정보를 확인하세요");
+      router.back();
+    }
+    router.push("/login/join2")
+  }
   return (
     <>
       <div className="joinbody">
@@ -19,14 +51,14 @@ export default function Join1(props) {
           </div>
         </div>
         <div className="joinDown">
-          <form className="joinForm" action="">
+          <form className="joinForm" onSubmit={actionJoin}>
             <div className="joinFormOne">
-              <label className="joinLabel" htmlFor="username">이름 </label><br />
-              <input className="joinInput" type="text" id="username" name="username" autoComplete='off' /><br />
+              <label className="joinLabel" htmlFor="name">이름 </label><br />
+              <input className="joinInput" type="text" id="name" name="name" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="birthday">생년월일 </label><br />
-              <input className="joinInput" type="password" id="birthday" name="birthday" autoComplete='off' /><br />
+              <input className="joinInput" type="date" id="birthday" name="birthday" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="phone">전화번호 </label><br />
@@ -34,7 +66,7 @@ export default function Join1(props) {
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="nickname">아이디 </label><br />
-              <input className="joinInput" type="password" id="nickname" name="nickname" autoComplete='off' /><br />
+              <input className="joinInput" type="text" id="nickname" name="nickname" autoComplete='off' /><br />
             </div>
             <div className="joinFormOne">
               <label className="joinLabel" htmlFor="password">비밀번호 </label><br />
@@ -42,16 +74,15 @@ export default function Join1(props) {
             </div>
           </form>
         </div>
+        <div className="joinBtnDiv">
+          <button className="joinBtn" type="submit">다음</button>
+          <button className="joinBtn" onClick={() => {
+            router.push("/login")
+          }}>취소</button>
+        </div>
       </div>
 
-      <div className="joinBtnDiv">
-        <button className="joinBtn" type="submit" onClick={() => {
-          router.push("/login/join2")
-        }}>다음</button>
-        <button className="joinBtn" type="submit" onClick={() => {
-          router.push("/login")
-        }}>취소</button>
-      </div>
+
       <style jsx>
         {`
         .joinbody {
@@ -146,9 +177,7 @@ export default function Join1(props) {
         /* bottom 공유 */
         .joinBtnDiv {
           text-align: center;
-          margin-top : 15px;
           width: 100%;
-          margin-bottom: 30px;
         }
         
         .joinBtn {

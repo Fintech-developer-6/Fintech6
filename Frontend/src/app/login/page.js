@@ -1,21 +1,47 @@
 'use client'
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Login(props) {
   const router = useRouter();
+  const params = useParams();
+  const [nickname, setNickname] = useState("");
+  const [password, setPassword] = useState("");
+
+  const actionLogin = async (e) => {
+    e.preventDefault();
+    const nickname = e.target.nickname.value;
+    const password = e.target.password.value;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nickname, password })
+    }
+    try {
+      const resp = await fetch(process.env.API_URL + 'login', options);
+      if (!resp.ok) {
+        throw new Error("Bad response", {
+          cause : {resp}
+        });
+
+      }
+    } catch (e) {
+      alert("로그인 실패하였습니다. 정보를 확인하세요");
+      router.back();
+    }
+  }
   return (
     <>
       <div className="loginbody">
         <div className="loginImage"><img src="/login/whiteHeartLogo.png" alt="#" /></div>
         <div className="loginImage"><img src="/login/profileLogo.png" alt="#" /></div>
-        <form className="loginForm" action="">
+        <form className="loginForm" onSubmit={actionLogin}>
           <input className="loginIdPassword" type="text" name="nickname" placeholder="아이디" autoComplete='off' />
           <input className="loginIdPassword" type="password" name="password" placeholder="비밀번호" autoComplete='off' />
-          <button className="loginBtn" onClick={(e) => {
-            e.preventDefault();
-            router.push("/")
-          }}>로그인</button>
+          <button className="loginBtn" type="submit">로그인</button>
         </form>
 
         <div>
@@ -26,7 +52,6 @@ export default function Login(props) {
             router.push("login/join1")
           }}>회원가입</button>
         </div>
-        <h1><Link href="/">홈 화면으로 가기</Link></h1>
 
       </div>
       <style jsx>
