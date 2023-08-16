@@ -110,10 +110,24 @@ const Home = () => {
           />
         <div className={styles.AdWrapper}>
         </div>
-              <MProfileModal open={modalOpen1} onClose={closeModal1} imageSrc={selectedImage} />
-              <FProfileModal open={modalOpen2} onClose={closeModal2} imageSrc={selectedImage} />
-              <FeedModal open={modalOpen3} onClose={closeModal3} imageSrc={selectedImage} />
-      </div>
+        {modalOpen1 && (
+        <div className={styles.modalOverlay}>
+          <MProfileModal open={modalOpen1} onClose={closeModal1} imageSrc={selectedImage} />
+        </div>
+        )}
+
+        {modalOpen2 && (
+        <div className={styles.modalOverlay}>
+          <FProfileModal open={modalOpen2} onClose={closeModal2} imageSrc={selectedImage} />
+        </div>
+        )}
+
+        {modalOpen3 && (
+        <div className={styles.modalOverlay}>
+          <FeedModal open={modalOpen3} onClose={closeModal3} imageSrc={selectedImage} />
+        </div>
+        )}
+    </div>
   );
 };
 
