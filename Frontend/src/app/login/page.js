@@ -24,13 +24,13 @@ export default function Login(props) {
       const resp = await fetch(process.env.API_URL + 'login', options);
       if (!resp.ok) {
         throw new Error("Bad response", {
-          cause : {resp}
+          cause: { resp }
         });
 
       }
     } catch (e) {
       alert("로그인 실패하였습니다. 정보를 확인하세요");
-      router.back();
+      router.refresh();
     }
   }
   return (
@@ -49,13 +49,12 @@ export default function Login(props) {
           <button className="loginBottomBtn">비밀번호 찾기</button>
           <button className="loginBottomBtn" onClick={(e) => {
             e.preventDefault();
-            router.push("login/join1")
+            router.push("/join")
           }}>회원가입</button>
         </div>
 
       </div>
-      <style jsx>
-        {`
+      <style jsx>{`
         .loginbody {
           background-color: #C998DC;
           margin: 0;
@@ -104,8 +103,7 @@ export default function Login(props) {
           font-size: 14px;
           border-style: none;
         }
-        `}
-      </style>
+      `}</style>
     </>
   )
 }

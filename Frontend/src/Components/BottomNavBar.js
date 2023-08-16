@@ -10,7 +10,7 @@ import Home from '@mui/icons-material/Home';
 import Tune from '@mui/icons-material/Tune';
 import { colors } from '@mui/material';
 import { useState } from 'react';
-import useGlobalContext from '../Context/store';
+import useGlobalContext from '../Context/global/store';
 
 export const BottomNavBar = () => {
   const { value, setValue } = useGlobalContext();
@@ -30,26 +30,26 @@ export const BottomNavBar = () => {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
-        sx ={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       >
-        <BottomNavigationAction label='홈' icon={<Home />} 
-          sx={{ color: changeActiveColor(0) }} 
+        <BottomNavigationAction label='홈' icon={<Home />}
+          sx={{ color: changeActiveColor(0) }}
           href='/home'
         />
-        <BottomNavigationAction label='캘린더' icon={<CalendarMonth />} 
-          sx={{ color: changeActiveColor(1) }} 
+        <BottomNavigationAction label='캘린더' icon={<CalendarMonth />}
+          sx={{ color: changeActiveColor(1) }}
           href='/calendar'
         />
         <BottomNavigationAction label='가계부' icon={<BorderColor />}
-          sx={{ color: changeActiveColor(2) }} 
+          sx={{ color: changeActiveColor(2) }}
           href='/account'
         />
-        <BottomNavigationAction label='관리' icon={<Tune />} 
-          sx={{ color: changeActiveColor(3) }} 
+        <BottomNavigationAction label='관리' icon={<Tune />}
+          sx={{ color: changeActiveColor(3) }}
           href='/manage'
         />
-        <BottomNavigationAction label='설정' icon={<Settings />} 
-          sx={{ color: changeActiveColor(4) }} 
+        <BottomNavigationAction label='설정' icon={<Settings />}
+          sx={{ color: changeActiveColor(4) }}
           href='/settings'
         />
       </BottomNavigation>

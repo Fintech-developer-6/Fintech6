@@ -1,8 +1,8 @@
-import { BottomNavBar } from './Components/BottomNavBar'
+import { BottomNavBar } from '../Components/BottomNavBar'
 import './globals.css'
 import { Nanum_Gothic_Coding } from 'next/font/google'
 import Style from "./page.module.css";
-import { GlobalContextProvider } from './Context/store';
+import { GlobalContextProvider } from '../Context/global/store';
 
 const inter = Nanum_Gothic_Coding({
   subsets: ['latin'],
