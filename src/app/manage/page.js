@@ -59,7 +59,7 @@ function Manage() {
   
   const colors = ['#C998DC', '#9EDC98', '#98A7DC', '#DC9898'];
 
-    const pieData = [
+  const pieData = [
     { name: '목표 달성', value: 24 },
     { name: '미달성', value: 76 },
   ];
